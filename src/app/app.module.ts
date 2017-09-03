@@ -5,11 +5,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CommonComponent } from './common/common.component';
+import { GridfilterPipe } from './gridfilter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    CommonComponent,
+    GridfilterPipe
   ],
   imports: [
     BrowserModule,

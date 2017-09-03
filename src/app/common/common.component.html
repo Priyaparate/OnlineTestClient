@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 lead"> search </div>
+    <div class="col-md-6"> <input type="text" class="form-control" name="filtertext" [(ngModel)]="filtertext" placeholder="search" /> </div>
+  </div>
+  <div class="row">
+    <div class="container" *ngIf="list">
+      <table class="table table-bordered  table-hover">
+        <tr class="info">
+          <th *ngFor="let key of headers">{{key}}
+          </th>
+
+          <th>edit</th>
+          <th>delete</th>
+        </tr>
+
+        <tr class="table-hover" *ngFor="let item of list|gridfilter:filtertext">
+          <td *ngFor="let Key of headers">{{item[Key]}}</td>
+
+          <th>
+            <span><i (click)="edit(item)" data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-pencil checkbox-inline"></i></span > </th>
+          <th><span><i (click)="delete(item)" class="glyphicon glyphicon-remove checkbox-inline"></i></span></th>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+</div>
+<div id="myModal" class="modal fade" role="dialog" *ngIf="this.editObject">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+        <form>
+
+
+          <div class="form-group" *ngFor="let key of headers">
+            <div *ngIf="isKey(key)">
+              <input type="hidden" name="{{key}}" [(ngModel)]="editObject[key]">
+            </div>
+             <div *ngIf="!isKey(key) && !isDependant(key,false)">
+              <label for="{{key}}">{{key}}</label>
+              <input type="text" class="form-control" id="{{key}}" placeholder="{{key}}" [(ngModel)]="editObject[key]" name="{{key}}">
+            </div>
+            <div *ngIf="isDependant(key,true)" class="form-group">
+              <label for="{{key}}">{{key}}</label>
+              <select name="{{key}}" id="{{key}}" [(ngModel)]="editObject[key]" class="form-control" >
+              <option [value]="item.Id" *ngFor="let item of dependantobj">
+                {{item[selectkey]}}
+              </option>
+               </select>
+            </div>
+           
+          </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
