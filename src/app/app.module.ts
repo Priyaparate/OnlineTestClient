@@ -7,18 +7,21 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CommonComponent } from './common/common.component';
 import { GridfilterPipe } from './gridfilter.pipe';
-
+import { AppRouteModule } from "./app.route";
+import {  RouterModule} from "@angular/router";
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CommonComponent,
-    GridfilterPipe
+    GridfilterPipe,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule,
+    AppRouteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

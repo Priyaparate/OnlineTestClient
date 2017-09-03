@@ -1,4 +1,7 @@
 <div class="container">
+  <div>
+    <h2>  {{title}}</h2>
+  </div>
   <div class="row">
     <div class="col-md-3 lead"> search </div>
     <div class="col-md-6"> <input type="text" class="form-control" name="filtertext" [(ngModel)]="filtertext" placeholder="search" /> </div>
@@ -7,7 +10,9 @@
     <div class="container" *ngIf="list">
       <table class="table table-bordered  table-hover">
         <tr class="info">
-          <th *ngFor="let key of headers">{{key}}
+          <th *ngFor="let key of headers" [hidden]="isKey(key)" >
+            
+            {{key}}
           </th>
 
           <th>edit</th>
@@ -15,7 +20,7 @@
         </tr>
 
         <tr class="table-hover" *ngFor="let item of list|gridfilter:filtertext">
-          <td *ngFor="let Key of headers">{{item[Key]}}</td>
+          <td *ngFor="let key of headers"  [hidden]="isKey(key)">{{item[key]}}</td>
 
           <th>
             <span><i (click)="edit(item)" data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-pencil checkbox-inline"></i></span > </th>
