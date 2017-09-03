@@ -11,6 +11,11 @@ const appRoutes: Routes = [
   component: CommonComponent,
   data:{ title: 'List of Country',entity:"country" } ,
   //  outlet: 'data'
+},
+{ path: 'city', 
+  component: CommonComponent,
+  data:{ title: 'List of City',entity:"City" } ,
+  //  outlet: 'data'
   },
   { path: '', 
   component: CommonComponent,

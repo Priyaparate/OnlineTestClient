@@ -9,12 +9,14 @@ import { CommonComponent } from './common/common.component';
 import { GridfilterPipe } from './gridfilter.pipe';
 import { AppRouteModule } from "./app.route";
 import {  RouterModule} from "@angular/router";
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CommonComponent,
     GridfilterPipe,
+    SidemenuComponent,
   ],
   imports: [
     BrowserModule,

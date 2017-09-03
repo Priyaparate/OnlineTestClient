@@ -14,7 +14,7 @@ export class CommonComponent implements OnInit {
 
 
 
-
+operation:string
   entity: string;
   list: any[];
   dependantObjectList: any;
@@ -69,9 +69,22 @@ export class CommonComponent implements OnInit {
   edit(item) {
     this.tearDown();
     this.setup(item)
-  }
+ this.operation="Edit"  
+}
 
   delete(item) {
+
+  }
+
+  save(f) {
+
+    console.log(f);
+
+  }
+  openAdd() {
+    this.operation="Add"
+    var obj = Object.getOwnPropertyNames(this.list[0]);
+    this.editObject = Object.create(obj)
 
   }
   isKey(key: string): boolean {
